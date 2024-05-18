@@ -1,18 +1,20 @@
 import { IHttp } from "@/@core/contratos/IHttp";
-import { Carro } from "../model/carro.model";
+import { Carro, NovoCarroDTO } from "../model/carro.model";
+import axios from "axios";
 
 export class CarroService {
-    private http: IHttp;
-
-    constructor(http: IHttp) {
-        this.http = http;
-    }
+    constructor(readonly http: IHttp) { }
 
     async resgatarCarros(): Promise<Carro[]> {
-        return await this.http.get<Carro[]>('/carros');
+        const resposta = await this.http.get<Carro[]>('/carros');
+        return resposta;
     }
 
-    async criarCarro(dados: Carro) {
+    async criarCarro(dados: NovoCarroDTO) {
         await this.http.post<Carro>('/carros', dados);
+    }
+
+    async deletarCarro(id: number) {
+        await this.http.delete('/carros/' + id);
     }
 }

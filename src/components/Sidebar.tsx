@@ -11,11 +11,6 @@ export const Sidebar = () => {
     { item: string; path: string; selecionado: boolean }[]
   >([
     {
-      item: "Inicio",
-      path: "/",
-      selecionado: false,
-    },
-    {
       item: "Carros",
       path: "/carros",
       selecionado: false,
@@ -54,11 +49,10 @@ export const Sidebar = () => {
 
   return (
     <nav
-      className={`w-[270px] bg-blue-800 px-2 py-8 flex flex-col gap-6 min-h-screen`}
+      className={`min-w-[270px] w-[270px] bg-blue-800 px-2 py-8 flex flex-col gap-6`}
     >
       <span className="flex gap-2 items-center px-2">
-        <b className="w-[50px] h-[50px] bg-white rounded-md">P</b>
-        <p>Productly</p>
+        <p className="text-2xl text-white">Gerenciamento de temas</p>
       </span>
       <span className="flex flex-col gap-2">
         <ul className="flex flex-col gap-2 text-white">

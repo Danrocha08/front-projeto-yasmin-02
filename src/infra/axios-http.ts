@@ -1,7 +1,7 @@
 import { IHttp } from "@/@core/contratos/IHttp";
 import axios, { Axios } from "axios";
 
-export class axiosHttp implements IHttp {
+export class AxiosHttp implements IHttp {
 
     private client: Axios;
 
@@ -9,6 +9,14 @@ export class axiosHttp implements IHttp {
         this.client = axios.create({
             baseURL: "http://localhost:8080/api"
         });
+    }
+
+    async delete(path: string): Promise<void> {
+        try {
+            const resposta = await this.client.delete(path);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     async post<T>(path: string, dados: any): Promise<T> {
