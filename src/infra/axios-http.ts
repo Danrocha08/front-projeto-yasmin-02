@@ -11,9 +11,17 @@ export class AxiosHttp implements IHttp {
         });
     }
 
+    async put(path: string, dados: any): Promise<void> {
+        try {
+            await this.client.put(path, dados);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     async delete(path: string): Promise<void> {
         try {
-            const resposta = await this.client.delete(path);
+            await this.client.delete(path);
         } catch (e) {
             console.error(e);
         }

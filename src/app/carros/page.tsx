@@ -1,6 +1,6 @@
 "use client";
 
-import { Carro } from "@/@core/modulos/carro/model/carro.model";
+import { Carro, EditarCarroDTO } from "@/@core/modulos/carro/model/carro.model";
 import { FormDinamico } from "@/components/FormDinamico";
 import { GaleriaDinamica } from "@/components/GaleriaDinamica";
 import { useServices } from "@/context/services.context";
@@ -31,7 +31,12 @@ export default function CarrosPage() {
     setCarrosResgatados(carros);
   }
 
-  async function deletarCarro(id: number) {
+  async function editaCarro(id: number, dadosCarroEditado: EditarCarroDTO) {
+    await carroService.editarCarro(id, dadosCarroEditado);
+    await resgataCarros();
+  }
+
+  async function deletaCarro(id: number) {
     await carroService.deletarCarro(id);
     await resgataCarros();
   }
@@ -56,7 +61,7 @@ export default function CarrosPage() {
         <h2 className="text-xl font-semibold">
           {carrosResgatados.length} Carros Cadastrados
         </h2>
-        <GaleriaDinamica chaveId="id" deletaItem={deletarCarro} itens={carrosResgatados} />
+        <GaleriaDinamica salvaAlteracoes={editaCarro} chaveId="id" deletaItem={deletaCarro} itens={carrosResgatados} />
       </div>
     </section>
   );

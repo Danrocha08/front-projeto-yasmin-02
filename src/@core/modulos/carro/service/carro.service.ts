@@ -1,6 +1,5 @@
 import { IHttp } from "@/@core/contratos/IHttp";
-import { Carro, NovoCarroDTO } from "../model/carro.model";
-import axios from "axios";
+import { Carro, EditarCarroDTO, NovoCarroDTO } from "../model/carro.model";
 
 export class CarroService {
     constructor(readonly http: IHttp) { }
@@ -16,5 +15,9 @@ export class CarroService {
 
     async deletarCarro(id: number) {
         await this.http.delete('/carros/' + id);
+    }
+
+    async editarCarro(id: number, dados: EditarCarroDTO) {
+        await this.http.put('/carros/' + id, dados);
     }
 }
