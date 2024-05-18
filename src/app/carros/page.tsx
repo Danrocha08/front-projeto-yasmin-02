@@ -57,11 +57,19 @@ export default function CarrosPage() {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-semibold">
-          {carrosResgatados.length} Carros Cadastrados
-        </h2>
-        <GaleriaDinamica salvaAlteracoes={editaCarro} chaveId="id" deletaItem={deletaCarro} itens={carrosResgatados} />
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
+          <h2 className="text-xl font-semibold">Carros Cadastrados</h2>
+          <span>
+            Quantidade total de carros cadastrados: {carrosResgatados.length}
+          </span>
+        </div>
+        <GaleriaDinamica
+          salvaAlteracoes={editaCarro}
+          chaveId="id"
+          deletaItem={deletaCarro}
+          itens={carrosResgatados}
+        />
       </div>
     </section>
   );
