@@ -1,6 +1,7 @@
+import { IHttp } from "@/@core/contratos/IHttp";
 import axios, { Axios } from "axios";
 
-export class Http {
+export class axiosHttp implements IHttp {
 
     private client: Axios;
 

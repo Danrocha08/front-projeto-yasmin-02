@@ -1,11 +1,11 @@
-import { Http } from "@/adapter/http";
+import { IHttp } from "@/@core/contratos/IHttp";
 import { Carro } from "../model/carro.model";
 
 export class CarroService {
-    private http: Http;
+    private http: IHttp;
 
-    constructor() {
-        this.http = new Http();
+    constructor(http: IHttp) {
+        this.http = http;
     }
 
     async resgatarCarros(): Promise<Carro[]> {
