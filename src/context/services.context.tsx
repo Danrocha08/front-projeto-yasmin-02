@@ -2,11 +2,13 @@
 
 import { IHttp } from "@/@core/contratos/IHttp";
 import { CarroService } from "@/@core/modulos/carro/service/carro.service";
+import { EmpregadoService } from "@/@core/modulos/empregados/service/empregado.service";
 import { AxiosHttp } from "@/infra/axios-http";
 import { createContext, PropsWithChildren, useContext } from "react";
 
 interface Services {
   carroService: CarroService;
+  empregadoService: EmpregadoService;
 }
 
 const ServicesContext = createContext<Services | undefined>(undefined);
@@ -16,6 +18,7 @@ export const ServicesProvider = ({ children }: PropsWithChildren) => {
 
   const services: Services = {
     carroService: new CarroService(axiosHttp),
+    empregadoService: new EmpregadoService(axiosHttp),
   };
 
   return (
