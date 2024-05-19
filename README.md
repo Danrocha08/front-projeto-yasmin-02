@@ -28,4 +28,66 @@
 ### Sidebar:
 
 **Descrição:** Menu com as páginas dos temas que foram selecionadas.
-**Observação importante:**
+**Observação importante:** A sidebar é dinâmica, definindo o nome do item no menu e seu caminho
+```tsx
+const [itensMenu, setItensMenu] = useState<
+    { item: string; path: string; selecionado: boolean }[]
+  >([
+    {
+      item: "Carros",
+      path: "/carros",
+      selecionado: false,
+    },
+    {
+      item: "Empregados",
+      path: "/empregados",
+      selecionado: false,
+    },
+    {
+      item: "Jogos",
+      path: "/jogos",
+      selecionado: false,
+    },
+    {
+      item: "Produtos",
+      path: "/produtos",
+      selecionado: false,
+    },
+  ]);
+```
+
+### FormDinamico:
+
+**Descrição:** Criei um formulário dinâmico onde ele recebe algumas informações e consegue renderizar um formulário com comportamento:
+```tsx
+type FormProps = {
+  campos: Object; // Esse objeto recebe os campos que existirão no formulário.
+  setDadoCampo: (campos: Object) => void; // Esse método será acionado quando o usuário digitar algo no formulário
+  enviaDados: () => Promise<void>; // Esse método é o que acontecerá quando o formulário for submetido
+};
+```
+**Observação importante:** É importante dizer que vocês optaram por um formulário dinâmico p/ extrair as vantagens da lib (ReactJS), como componentização e tratamento de estado de objeto.
+
+### GaleriaDinamica:
+
+**Descrição:** A galeria dinâmica é bem similar ao formulário, recebe alguns objetos p/ renderizar a visualização de todos os itens cadastrados naquele tema:
+```tsx
+type GaleriaProps = {
+  itens: Object[]; // Recebe a lista de itens p/ renderizar na galeria
+  chaveId: string; // É a chave do id do item, exemplo: carro poderia ser idCarro e produto poderia ser idProduto, então para saber qual o campo que é utilizado como id coloquei esse item.
+  deletaItem: (id: any) => Promise<void>; // O método que é utilizado para apagar um item, dado que um usuário pode apagar e editar os itens da galeria.
+  salvaAlteracoes: (id: number, dados: any) => Promise<void>; // O método utilizado p/ salvar as alterações de um item
+};
+```
+**Observação importante:** As mesmas vantagens que citaram para o formulário dinâmico é importante dizer aqui também.
+
+---
+
+## Injeção de dependência:
+**Importante:** Criei um contexto para injeção de dependência, fiz isso para seguir as boas práticas, as vantagens de implementar isso é que vocês poderão alterar a lib que faz o fetch de informações (no caso eu utilizei o Axios) com mais facilidade. É importante falar sobre isso por que foi implementado manualmente.
+
+- O contrato do serviço está no `@core/contratos/IHttp.ts`, independente de biblioteca.
+- A implementação desse contrato está em `app/infra/axios-http.ts`.
+- A injeção está acontecendo em `app/context/services.context.tsx`.
+
+**Importância disso:** Desacopla a lib (axios) da aplicação, facilitando a implementação de outra lib p/ fetch de dados. 

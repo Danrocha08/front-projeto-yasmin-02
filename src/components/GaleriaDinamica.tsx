@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { ModalEditarItem } from "./ModalEditarItem";
 
-type FormProps = {
+type GaleriaProps = {
   itens: Object[];
   chaveId: string;
   deletaItem: (id: any) => Promise<void>;
   salvaAlteracoes: (id: number, dados: any) => Promise<void>;
 };
 
-export const GaleriaDinamica = (props: FormProps) => {
+export const GaleriaDinamica = (props: GaleriaProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [itemEditando, setItemEditando] = useState<{
     [key: string]: any;
