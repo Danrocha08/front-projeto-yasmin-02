@@ -34,7 +34,7 @@ export const FormDinamico = (props: FormProps) => {
       }}
       className="flex flex-col gap-4"
     >
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
         {Object.keys(props.campos).map((chave) => {
           return (
             <div className="mb-2" key={chave}>
