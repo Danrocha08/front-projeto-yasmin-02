@@ -4,10 +4,10 @@
 
 **Lista de critérios de avaliação que seguirei:**
 
-- Utilização de HTML5 com escolha das TAGs com base em sua semântica. Construção semântica do documento HTML.
-- Apresentação visual adequada ao tema e fazendo uso de CSS responsivo (versão mobile e desktop).
-- Organização em arquivos dos scripts JavaScript e requisição HTTP via JavaScript à API do projeto organizada.
-- Integração entre os temas. Uma única aplicação Web que permita navegar entre os temas do grupo. Não será aceito uma página com link para cada tema. Seja criativo.
+- Utilização de HTML5 com escolha das TAGs com base em sua semântica. Construção semântica do documento HTML. **(OK)**
+- Apresentação visual adequada ao tema e fazendo uso de CSS responsivo (versão mobile e desktop). **(OK)**
+- Organização em arquivos dos scripts JavaScript e requisição HTTP via JavaScript à API do projeto organizada. **(OK)**
+- Integração entre os temas. Uma única aplicação Web que permita navegar entre os temas do grupo. Não será aceito uma página com link para cada tema. Seja criativo. **(NÃO OK, precisaria de ajustes no back...)**
 
 **Observação importante:**
 
