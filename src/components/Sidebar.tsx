@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -49,13 +50,25 @@ export const Sidebar = () => {
 
   return (
     <nav
-      className={`min-w-[270px] w-[270px] bg-blue-800 px-2 py-8 flex flex-col gap-6`}
+      className={`${
+        sidebarEstado ? "w-full" : "w-12"
+      } md:min-w-[270px] md:w-[270px] bg-blue-800 px-2 py-8 flex flex-col gap-6 relative`}
     >
-      <span className="flex gap-2 items-center px-2">
+      <button
+        className="block md:hidden w-8 h-8 mx-auto"
+        onClick={handleEstadoSidebar}
+      >
+        <BurgerMenuSVG />
+      </button>
+      <span
+        className={`${
+          sidebarEstado ? "flex" : "hidden"
+        } md:flex gap-2 items-center px-2`}
+      >
         <p className="text-2xl text-white">Gerenciamento de temas</p>
       </span>
       <span className="flex flex-col gap-2">
-        <ul className="flex flex-col gap-2 text-white">
+        <ul className="overflow-hidden flex flex-col gap-2 text-white">
           {itensMenu.map((itemMenu) => (
             <li
               key={itemMenu.path}
@@ -81,5 +94,16 @@ export default function Home() {
         <h1 className="text-white">Conteúdo principal</h1>
       </div>
     </main>
+  );
+}
+
+function BurgerMenuSVG() {
+  return (
+    <Image
+      width={50}
+      height={50}
+      src={"/burger-menu.svg"}
+      alt="icone hamburger menu"
+    />
   );
 }
