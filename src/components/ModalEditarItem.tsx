@@ -26,8 +26,8 @@ export const ModalEditarItem = (props: ModalProps) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white rounded p-8 w-1/2">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center py-4 md:py-0">
+      <div className="bg-white rounded p-8 md:w-1/2 h-full overflow-auto">
         <h2 className="text-2xl font-semibold mb-4">Editar Item</h2>
         <form
           onSubmit={async (e) => {

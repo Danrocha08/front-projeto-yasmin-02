@@ -28,7 +28,7 @@ export default function CarrosPage() {
   const [carrosResgatados, setCarrosResgatados] = useState<Carro[]>([]);
   async function resgataCarros() {
     const carros = await carroService.resgatarCarros();
-    setCarrosResgatados(carros);
+    setCarrosResgatados(carros ?? []);
   }
 
   async function editaCarro(id: number, dadosCarroEditado: EditarCarroDTO) {
